@@ -1,0 +1,10 @@
+#Tadeo Sauceda Flores programacion basica "Factorial"
+
+def factorial(n):
+    resultado = 1
+    for i in range(1, n + 1):
+        resultado *= i
+    return resultado
+#aqui se ingresa el nuemro que se desa sacar factorial
+numero = 9
+print(f"El factorial de {numero} es {factorial(numero)}")
