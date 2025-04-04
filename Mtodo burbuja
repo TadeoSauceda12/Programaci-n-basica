@@ -1,0 +1,18 @@
+#Tadeo Sauceda Flores programacion basica "Metodo burbuja"
+
+import numpy as np
+def burbuja(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if lista[j] > lista[j + 1]:
+                # Intercambiamos los elementos si están en el orden incorrecto
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+
+# Generamos una lista aleatoria de 10 números enteros entre 1 y 100
+numeros = np.random.randint(1, 101, size=10)
+numeros = numeros.tolist()
+
+print("Lista original:", numeros)
+burbuja(numeros)
+print("Lista ordenada:", numeros)
