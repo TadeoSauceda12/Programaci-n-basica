@@ -1,0 +1,20 @@
+#Tadeo Sauceda Flores programacion basica "Quick Sort"
+
+import numpy as np
+
+def quicksort(lista):
+    if len(lista) <= 1:
+        return lista 
+
+    pivote = lista[len(lista) // 2]  
+    menores = [x for x in lista if x < pivote]  
+    iguales = [x for x in lista if x == pivote] 
+    mayores = [x for x in lista if x > pivote]  
+
+    return quicksort(menores) + iguales + quicksort(mayores)  
+# Generamos una lista aleatoria de 10 números entre 1 y 100
+numeros = np.random.randint(1, 101, size=10).tolist()
+print("Lista original:", numeros)
+
+lista_ordenada = quicksort(numeros)
+print("Lista ordenada:", lista_ordenada)
