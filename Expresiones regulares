@@ -1,0 +1,32 @@
+#Tadeo Sauceda Flores programacion basica "Expresiones regulares"
+import re
+import os
+
+# Expresiones regulares para los diferentes patrones
+patterns = {
+    "telefono": r"\(?\d{2,3}\)?[\s\-]?\d{4}[\s\-]?\d{4}",
+    "tarjeta_credito": r"\b(?:\d[ -]*?){13,16}\b",
+    "curp": r"[A-Z]{4}\d{6}[A-Z]{6}[A-Z]{1}\d{2}",
+    "contrasena": r"(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z\d!@#$%^&*(),.?\":{}|<>]{8,}",
+    "url": r"https?://(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}(\.[a-zA-Z]{2})?/[\w\-\./?%=&;]*"
+}
+
+# Función para buscar patrones en el contenido de los archivos
+def buscar_en_archivos(directorio):
+    for filename in os.listdir(directorio):
+        if filename.endswith(".txt"):
+            with open(os.path.join(directorio, filename), "r", encoding="utf-8", errors="ignore") as file:
+                contenido = file.read()
+                
+                print(f"Buscando en el archivo: {filename}")
+                
+                for key, pattern in patterns.items():
+                    coincidencias = re.findall(pattern, contenido)
+                    if coincidencias:
+                        print(f"\n{key.capitalize()}:")
+                        for match in coincidencias:
+                            print(f"  {match}")
+
+# Llamamos a la función en un directorio de ejemplo
+directorio =   # ingresar donde estan los archivos
+buscar_en_archivos(directorio)
